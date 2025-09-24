@@ -8,19 +8,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
     <style>
-        /* نفس الأنماط من الموقع الرئيسي */
         :root {
             --primary: #c9a96e;
+            --secondary: #b89454;
             --dark-bg: #1a1a1a;
             --dark-surface: #2d2d2d;
             --text-primary: #ffffff;
             --text-subtle: #b0b0b0;
+            --color-gold: #C0A463;
+            --color-gradient: linear-gradient(135deg, #C0A463, #E1C18E);
         }
         
         body {
             font-family: 'Tajawal', sans-serif;
             background-color: var(--dark-bg);
             color: var(--text-primary);
+            padding-top: 80px;
         }
         
         .text-gold {
@@ -29,20 +32,6 @@
         
         .bg-dark-surface {
             background-color: var(--dark-surface);
-        }
-        
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background-color: #b89454;
-            transform: translateY(-2px);
         }
         
         .section-header {
@@ -80,187 +69,185 @@
         .delay-400 { transition-delay: 0.4s; }
         .delay-500 { transition-delay: 0.5s; }
         
-        /* أنماط التنقل */
+        /* ===== شريط التنقل (Navbar) المعدل ===== */
         #navbar {
-    width: 100%;
-    padding: 0 60px;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    height: 80px;
-    position: fixed;
-    top: 0;
-    left: 0;
-}
+            width: 100%;
+            padding: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 80px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            border-radius: 0;
+            background: rgba(45, 45, 45, 0.95);
+            backdrop-filter: blur(12px);
+            border: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
 
-#navbar.scrolled {
-    padding: 0 1rem;
-    height: 70px;
-    backdrop-filter: blur(12px);
-    position: relative;
-    top: 5px;
-    left: 60px;
-    width: 90%;
-    border-width: 1px;
-    border-radius: 30px;
-    border-color: #c0a46323;
-    position: fixed;
-}
+        /* حالة النافبار عند التمرير */
+        #navbar.scrolled {
+            width: calc(100% - 40px);
+            margin: 20px;
+            border-radius: 50px;
+            background: rgba(45, 45, 45, 0.7);
+            border: 1px solid rgba(192, 164, 99, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
 
-#navbar.scrolled:hover{
-    border-color: #C0A463;
-    border-width: 1px;
-    transition: 0.5s;
-}
+        #navbar.scrolled:hover {
+            border-color: #C0A463;
+        }
 
-.hotel-logo {
-    height: 130px;
-    transition: all 0.3s ease;
-}
+        .navbar-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-#navbar.scrolled .hotel-logo {
-    height: 130px;
-
-}
-
-#navbar button {
-    padding-left: 25px;
-    background: none;
-    border: none;
-    color: var(--color-text-light);
-    cursor: pointer;
-    font-size: 1.2rem;
-}
-
-.nav-link {
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    font-weight: 500;
-    color: var(--color-text-light);
-    padding: 15px 10px;
-    border-radius: 6px;
-    text-decoration: none;
-}
-
-.nav-link:hover {
-    transform: translateY(-3px);
-    color: var(--color-gold);
-    background: rgba(192, 164, 99, 0.1);
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 2px;
-    background: var(--color-gradient);
-    transition: width 0.4s ease-out;
-    border-radius: 2px;
-}
-
-.nav-link:hover::after, 
-.nav-link.active::after {
-    width: 80%;
-}
-
-/* ===== BUTTONS ===== */
-.btn {
-    padding: 12px 24px;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    text-decoration: none;
-    display: inline-block;
-    border: none;
-    cursor: pointer;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 1rem;
-}
-
-.btn-primary {
-    background: var(--color-gradient);
-    color: white;
-    border: 2px solid transparent;
-    box-shadow: 0 5px 15px rgba(192, 164, 99, 0.4);
-}
-
-.btn-primary:hover {
-    background: transparent;
-    color: var(--color-gold);
-    border-color: var(--color-gold);
-    box-shadow: 0 8px 20px rgba(192, 164, 99, 0.3);
-    transform: translateY(-3px);
-}
+        .hotel-logo {
+            height: 130px;
+            transition: all 0.3s ease;
+        }
         
-        /* هيرو سيكشن للغرفة */
+        .nav-link {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 500;
+            color: var(--text-primary);
+            padding: 15px 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .nav-link:hover {
+            transform: translateY(-3px);
+            color: var(--color-gold);
+            background: rgba(192, 164, 99, 0.1);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--color-gradient);
+            transition: width 0.4s ease-out;
+            border-radius: 2px;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
+
+        /* ===== الأزرار ===== */
+        .btn {
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--color-gradient);
+            color: white;
+            border: 2px solid transparent;
+            box-shadow: 0 5px 15px rgba(192, 164, 99, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--color-gold);
+            border-color: var(--color-gold);
+            box-shadow: 0 8px 20px rgba(192, 164, 99, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        /* ===== هيرو سيكشن للغرفة ===== */
         .room-hero {
             height: 70vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('deluxe.jfif') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            margin-top: 80px;
+            margin-top: 0;
         }
-        
+
         .room-hero-content h1 {
             font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
         }
-        
+
         .room-hero-content p {
             font-size: 1.5rem;
             margin-bottom: 2rem;
         }
-        
+
         .price-tag {
             font-size: 2rem;
             font-weight: bold;
             color: var(--primary);
             margin: 1rem 0;
         }
-        
-        /* معرض الصور */
+
+        /* ===== معرض الصور ===== */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1rem;
             margin-top: 2rem;
         }
-        
+
         .gallery-item {
             overflow: hidden;
             border-radius: 10px;
             height: 250px;
+            position: relative;
         }
-        
+
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
-        
+
         .gallery-item:hover img {
             transform: scale(1.05);
         }
-        
-        /* ميزات الغرفة */
+
+        /* ===== ميزات الغرفة ===== */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
-        
+
         .feature-item {
             text-align: center;
             padding: 1.5rem;
@@ -268,36 +255,36 @@
             border-radius: 10px;
             transition: transform 0.3s ease;
         }
-        
+
         .feature-item:hover {
             transform: translateY(-5px);
         }
-        
+
         .feature-icon {
             font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 1rem;
         }
-        
-        /* نموذج الحجز */
+
+        /* ===== نموذج الحجز ===== */
         .booking-form {
             background-color: var(--dark-surface);
             padding: 2rem;
             border-radius: 10px;
             margin-top: 2rem;
         }
-        
+
         .form-group {
             margin-bottom: 1.5rem;
         }
-        
+
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             color: var(--primary);
             font-weight: bold;
         }
-        
+
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 0.75rem;
@@ -306,41 +293,84 @@
             border-radius: 5px;
             color: var(--text-primary);
         }
-        
-        /* فوتر */
+
+        /* ===== فوتر ===== */
         footer {
             background-color: var(--dark-surface);
             padding: 3rem 0;
             margin-top: 4rem;
         }
-        
+
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-        
+
         .footer-logo {
             height: 60px;
             margin-bottom: 1rem;
+        }
+
+        /* القائمة المتنقلة */
+        #mobile-menu {
+            top: 80px;
+        }
+
+        /* تحسينات إضافية */
+        .room-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .room-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        .amenities-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .amenity-item i {
+            color: var(--primary);
+            margin-left: 0.5rem;
         }
     </style>
 </head>
 <body class="antialiased">
     <nav id="navbar">
-        <a href="index.html" class="font-bold text-2xl text-gold flex items-center">
-            <img src="logo-bg.png" alt="شعار فندق الضياء" class="hotel-logo">
-        </a>
-        <div class="hidden md:flex space-x-6 space-x-reverse">
-            <a href="index.html" class="nav-link">الرئيسية</a>
-            <a href="index.html#rooms" class="nav-link">الغرف</a>
-            <a href="index.html#amenities" class="nav-link">المرافق</a>
-            <a href="index.html#contact" class="nav-link">اتصل بنا</a>
-            <a href="#booking" class="btn btn-primary">احجز الآن</a>
+        <div class="navbar-container">
+            <a href="index.html" class="font-bold text-2xl text-gold flex items-center">
+                <img src="logo.png" alt="شعار فندق الضياء" class="hotel-logo">
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="nav-link">الرئيسية</a>
+                <a href="index.html#rooms" class="nav-link">الغرف</a>
+                <a href="index.html#amenities" class="nav-link">المرافق</a>
+                <a href="index.html#contact" class="nav-link">اتصل بنا</a>
+                
+                <a href="#booking" class="btn btn-primary">احجز الآن</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-white">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
         </div>
-        <button id="mobile-menu-btn" class="md:hidden text-white">
-            <i class="fas fa-bars fa-lg"></i>
-        </button>
     </nav>
 
     <div id="mobile-menu" class="md:hidden fixed top-20 right-5 bg-dark-surface p-4 space-y-4 rounded-lg z-40 hidden">
@@ -360,32 +390,44 @@
         </div>
     </section>
 
-    <section id="overview" class="py-16">
+    <section id="overview" class="section-padding">
         <div class="container">
             <div class="section-header">
                 <h2>نظرة عامة</h2>
                 <p>اكتشف فخامة وراحة الغرفة الديلوكس في فندق الضياء</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="animate-on-scroll">
-                    <img src="deluxe-room.jfif" alt="الغرفة الديلوكس" class="rounded-lg shadow-lg w-full">
+                <div class="animate-on-scroll room-image">
+                    <img src="delux-room.jfif" alt="الغرفة الديلوكس">
                 </div>
                 <div class="animate-on-scroll">
                     <h3 class="text-2xl font-bold text-gold mb-4">تجربة إقامة فاخرة</h3>
                     <p class="mb-4">تم تصميم الغرفة الديلوكس بعناية لتوفر لضيوفنا أقصى درجات الراحة والرفاهية. بمساحة 40 متر مربع، توفر الغرفة مساحة واسعة للاسترخاء مع منطقة جلوس منفصلة.</p>
                     <p class="mb-4">تتميز الغرفة بديكور فاخر يجمع بين الأصالة والحداثة، مع إطلالة خلابة على المدينة أو الفناء الداخلي من خلال الشرفة الخاصة.</p>
-                    <ul class="space-y-2">
-                        <li><i class="fas fa-check text-gold mr-2"></i> سرير فاخر بحجم كينغ أو توأم</li>
-                        <li><i class="fas fa-check text-gold mr-2"></i> حمام خاص مزود بحوض استحمام فاخر</li>
-                        <li><i class="fas fa-check text-gold mr-2"></i> تلفزيون بشاشة مسطحة كبيرة مع قنوات متنوعة</li>
-                        <li><i class="fas fa-check text-gold mr-2"></i> شرفة خاصة بإطلالة مميزة</li>
-                    </ul>
+                    <div class="amenities-list">
+                        <div class="amenity-item">
+                            <i class="fas fa-check"></i>
+                            <span>سرير فاخر بحجم كينغ أو توأم</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-check"></i>
+                            <span>حمام خاص مزود بحوض استحمام فاخر</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-check"></i>
+                            <span>تلفزيون بشاشة مسطحة كبيرة مع قنوات متنوعة</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-check"></i>
+                            <span>شرفة خاصة بإطلالة مميزة</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="features" class="py-16 bg-dark-surface">
+    <section id="features" class="section-padding bg-dark-surface">
         <div class="container">
             <div class="section-header">
                 <h2>ميزات الغرفة</h2>
@@ -426,7 +468,7 @@
         </div>
     </section>
 
-    <section id="gallery" class="py-16">
+    <section id="gallery" class="section-padding">
         <div class="container">
             <div class="section-header">
                 <h2>معرض الصور</h2>
@@ -434,16 +476,22 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item animate-on-scroll delay-100">
-                    <img src="deluxe-room.jfif" alt="الغرفة الديلوكس - المنظر العام">
+                    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="الغرفة الديلوكس - المنظر العام">
+                </div>
+                <div class="gallery-item animate-on-scroll delay-200">
+                    <img src="deluxe-bath.jfif" alt="حمام الغرفة الديلوكس">
                 </div>
                 <div class="gallery-item animate-on-scroll delay-300">
-                    <img src="deluxe-bath.jfif" alt="حمام الغرفة الديلوكس">
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="منظر الغرفة من زاوية أخرى">
+                </div>
+                <div class="gallery-item animate-on-scroll delay-400">
+                    <img src="https://images.unsplash.com/photo-1564078516393-cf04bd966897?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="منطقة الجلوس في الغرفة">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="details" class="py-16 bg-dark-surface">
+    <section id="details" class="section-padding bg-dark-surface">
         <div class="container">
             <div class="section-header">
                 <h2>تفاصيل الإقامة</h2>
@@ -454,19 +502,19 @@
                     <h3 class="text-2xl font-bold text-gold mb-4">تفاصيل الغرفة</h3>
                     <ul class="space-y-3">
                         <li class="flex items-start">
-                            <i class="fas fa-ruler-combined text-gold mt-1 mr-3"></i>
+                            <i class="fas fa-ruler-combined text-gold mt-1 ml-3"></i>
                             <span><strong>المساحة:</strong> 40 متر مربع</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-user-friends text-gold mt-1 mr-3"></i>
+                            <i class="fas fa-user-friends text-gold mt-1 ml-3"></i>
                             <span><strong>السعة:</strong> 2 بالغين + طفل واحد</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-bed text-gold mt-1 mr-3"></i>
+                            <i class="fas fa-bed text-gold mt-1 ml-3"></i>
                             <span><strong>السرير:</strong> 1 سرير كينغ أو سريرين توأم</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-door-open text-gold mt-1 mr-3"></i>
+                            <i class="fas fa-door-open text-gold mt-1 ml-3"></i>
                             <span><strong>الإطلالة:</strong> إطلالة بانورامية على المدينة</span>
                         </li>
                     </ul>
@@ -474,19 +522,19 @@
                 <div class="animate-on-scroll">
                     <h3 class="text-2xl font-bold text-gold mb-4">الخدمات المشمولة</h3>
                     <ul class="space-y-3">
-                        <li><i class="fas fa-check text-gold mr-2"></i> وجبة الإفطار</li>
-                        <li><i class="fas fa-check text-gold mr-2"></i> خدمة الواي فاي المجانية</li>
-                        <li><i class="fas fa-check text-gold mr-2"></i> مواقف سيارات مجانية</li>
-                        <li><i class="fas fa-check text-gold mr-2"></i> خدمة التنظيف اليومي</li>
-                        <li><i class="fas fa-check text-gold mr-2"></i> خدمة استقبال على مدار 24 ساعة</li>
-                        <li><i class="fas fa-check text-gold mr-2"></i> استخدام المرافق العامة</li>
+                        <li><i class="fas fa-check text-gold ml-2"></i> وجبة الإفطار</li>
+                        <li><i class="fas fa-check text-gold ml-2"></i> خدمة الواي فاي المجانية</li>
+                        <li><i class="fas fa-check text-gold ml-2"></i> مواقف سيارات مجانية</li>
+                        <li><i class="fas fa-check text-gold ml-2"></i> خدمة التنظيف اليومي</li>
+                        <li><i class="fas fa-check text-gold ml-2"></i> خدمة استقبال على مدار 24 ساعة</li>
+                        <li><i class="fas fa-check text-gold ml-2"></i> استخدام المرافق العامة</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="booking" class="py-16">
+    <section id="booking" class="section-padding">
         <div class="container">
             <div class="section-header">
                 <h2>احجز غرفتك الديلوكس</h2>
@@ -537,7 +585,7 @@
         </div>
     </section>
 
-    <section id="faq" class="py-16 bg-dark-surface">
+    <section id="faq" class="section-padding bg-dark-surface">
         <div class="container">
             <div class="section-header">
                 <h2>أسئلة شائعة</h2>
@@ -568,7 +616,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <img src="logo-bg.png" alt="شعار فندق الضياء" class="footer-logo">
+                    <img src="logo.png" alt="شعار فندق الضياء" class="footer-logo">
                     <p class="mb-4">واحة المدينة الروحانية، حيث تلتقي الراحة بالروحانية.&copy; 2025 فندق الضياء. جميع الحقوق محفوظة.</p>
                 </div>
                 <div>
@@ -638,12 +686,34 @@
             // تأثير الشريط الملاحي عند التمرير
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', function() {
-                if (window.scrollY > 100) {
-                    navbar.style.backgroundColor = 'rgba(26, 26, 26, 0.95)';
-                    navbar.style.padding = '0.5rem 2rem';
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
                 } else {
-                    navbar.style.backgroundColor = 'rgba(26, 26, 26, 0.9)';
-                    navbar.style.padding = '1rem 2rem';
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Set minimum dates for booking form
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            
+            const checkinInput = document.getElementById('checkin');
+            const checkoutInput = document.getElementById('checkout');
+            
+            checkinInput.min = today.toISOString().split('T')[0];
+            checkoutInput.min = tomorrow.toISOString().split('T')[0];
+            
+            // Update checkout min date when checkin changes
+            checkinInput.addEventListener('change', function() {
+                const checkinDate = new Date(this.value);
+                const nextDay = new Date(checkinDate);
+                nextDay.setDate(nextDay.getDate() + 1);
+                checkoutInput.min = nextDay.toISOString().split('T')[0];
+                
+                // If checkout date is before new min date, update it
+                if (new Date(checkoutInput.value) < nextDay) {
+                    checkoutInput.value = nextDay.toISOString().split('T')[0];
                 }
             });
         });
