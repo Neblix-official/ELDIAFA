@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الغرفة القياسية - فندق الضياء</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <style>
+        /* نفس الأنماط من الموقع الرئيسي */
+        :root {
+            --primary: #c9a96e;
+            --dark-bg: #1a1a1a;
+            --dark-surface: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-subtle: #b0b0b0;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+        }
+        
+        .text-gold {
+            color: var(--primary);
+        }
+        
+        .bg-dark-surface {
+            background-color: var(--dark-surface);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #b89454;
+            transform: translateY(-2px);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+        .delay-400 { transition-delay: 0.4s; }
+        .delay-500 { transition-delay: 0.5s; }
+        
+        /* أنماط التنقل */
+        nav {
+            background-color: rgba(26, 26, 26, 0.9);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .hotel-logo {
+            height: 50px;
+            width: auto;
+        }
+        
+        /* هيرو سيكشن للغرفة */
+        .room-hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('normal-room.jfif') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .room-hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .room-hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .price-tag {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        
+        /* معرض الصور */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* ميزات الغرفة */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--dark-surface);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* نموذج الحجز */
+        .booking-form {
+            background-color: var(--dark-surface);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--dark-bg);
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: var(--text-primary);
+        }
+        
+        /* فوتر */
+        footer {
+            background-color: var(--dark-surface);
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <nav id="navbar">
+        <a href="index.html" class="font-bold text-2xl text-gold flex items-center">
+            <img src="logo-bg.png" alt="شعار فندق الضياء" class="hotel-logo">
+        </a>
+        <div class="hidden md:flex space-x-6 space-x-reverse">
+            <a href="index.html" class="nav-link">الرئيسية</a>
+            <a href="index.html#rooms" class="nav-link">الغرف</a>
+            <a href="index.html#amenities" class="nav-link">المرافق</a>
+            <a href="index.html#contact" class="nav-link">اتصل بنا</a>
+            <a href="#booking" class="btn btn-primary">احجز الآن</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-white">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+    </nav>
+
+    <div id="mobile-menu" class="md:hidden fixed top-20 right-5 bg-dark-surface p-4 space-y-4 rounded-lg z-40 hidden">
+        <a href="index.html" class="block nav-link">الرئيسية</a>
+        <a href="index.html#rooms" class="block nav-link">الغرف</a>
+        <a href="index.html#amenities" class="block nav-link">المرافق</a>
+        <a href="index.html#contact" class="block nav-link">اتصل بنا</a>
+        <a href="#booking" class="block btn btn-primary text-center">احجز الآن</a>
+    </div>
+
+    <!-- هيرو سيكشن للغرفة -->
+    <section class="room-hero">
+        <div class="room-hero-content">
+            <h1>الغرفة القياسية</h1>
+            <p>غرفة مريحة مزودة بجميع الخدمات الأساسية لتجربة إقامة مريحة</p>
+            <div class="price-tag">100 ر.س / ليلة</div>
+            <a href="#booking" class="btn btn-primary">احجز الآن</a>
+        </div>
+    </section>
+
+    <!-- نظرة عامة -->
+    <section id="overview" class="py-16">
+        <div class="container">
+            <div class="section-header">
+                <h2>نظرة عامة</h2>
+                <p>اكتشف راحة وهدوء الغرفة القياسية في فندق الضياء</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll">
+                    <img src="2normal.jfif" alt="الغرفة القياسية" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="animate-on-scroll">
+                    <h3 class="text-2xl font-bold text-gold mb-4">تجربة إقامة مريحة</h3>
+                    <p class="mb-4">تم تصميم الغرفة القياسية بعناية لتوفر لضيوفنا الراحة والهدوء خلال إقامتهم. بمساحة 25 متر مربع، توفر الغرفة مساحة كافية للاسترخاء والراحة.</p>
+                    <p class="mb-4">تتميز الغرفة بديكور أنيق يجمع بين الأصالة والحداثة، مع ألوان هادئة تخلق أجواءً من الاسترخاء والطمأنينة.</p>
+                    <ul class="space-y-2">
+                        <li><i class="fas fa-check text-gold mr-2"></i> سرير مريح بحجم كينغ أو توأم</li>
+                        <li><i class="fas fa-check text-gold mr-2"></i> حمام خاص مع أدوات استحمام فاخرة</li>
+                        <li><i class="fas fa-check text-gold mr-2"></i> تلفزيون بشاشة مسطحة مع قنوات متنوعة</li>
+                        <li><i class="fas fa-check text-gold mr-2"></i> تكييف مستقل وخدمة الواي فاي المجانية</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الميزات -->
+    <section id="features" class="py-16 bg-dark-surface">
+        <div class="container">
+            <div class="section-header">
+                <h2>ميزات الغرفة</h2>
+                <p>جميع الخدمات والمرافق المتوفرة في الغرفة القياسية</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item animate-on-scroll delay-100">
+                    <i class="fas fa-bed feature-icon"></i>
+                    <h3 class="text-xl font-bold mb-2">سرير فاخر</h3>
+                    <p class="text-text-subtle">سرير بحجم كينغ مع مرتبة عالية الجودة لتجربة نوم مريحة</p>
+                </div>
+                <div class="feature-item animate-on-scroll delay-200">
+                    <i class="fas fa-tv feature-icon"></i>
+                    <h3 class="text-xl font-bold mb-2">تلفزيون ذكي</h3>
+                    <p class="text-text-subtle">شاشة مسطحة 42 بوصة مع قنوات محلية ودولية</p>
+                </div>
+                <div class="feature-item animate-on-scroll delay-300">
+                    <i class="fas fa-wifi feature-icon"></i>
+                    <h3 class="text-xl font-bold mb-2">واي فاي مجاني</h3>
+                    <p class="text-text-subtle">إنترنت عالي السرعة متاح في جميع أنحاء الغرفة</p>
+                </div>
+                <div class="feature-item animate-on-scroll delay-400">
+                    <i class="fas fa-snowflake feature-icon"></i>
+                    <h3 class="text-xl font-bold mb-2">تكييف مستقل</h3>
+                    <p class="text-text-subtle">نظام تكييف يمكنك التحكم فيه حسب رغبتك</p>
+                </div>
+                <div class="feature-item animate-on-scroll delay-500">
+                    <i class="fas fa-coffee feature-icon"></i>
+                    <h3 class="text-xl font-bold mb-2">خدمة الشاي والقهوة</h3>
+                    <p class="text-text-subtle">أدوات تحضير الشاي والقهوة متوفرة في الغرفة</p>
+                </div>
+                <div class="feature-item animate-on-scroll">
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <h3 class="text-xl font-bold mb-2">خزنة شخصية</h3>
+                    <p class="text-text-subtle">خزنة إلكترونية آمنة لحفظ متعلقاتك القيمة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- معرض الصور -->
+    <section id="gallery" class="py-16">
+        <div class="container">
+            <div class="section-header">
+                <h2>معرض الصور</h2>
+                <p>جولة مصورة داخل الغرفة القياسية</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item animate-on-scroll delay-100">
+                    <img src="normal-room.jfif" alt="الغرفة القياسية - المنظر العام">
+                </div>
+                <div class="gallery-item animate-on-scroll delay-200">
+                    <img src="normal-path.jfif" alt="حمام الغرفة القياسية">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- تفاصيل الإقامة -->
+    <section id="details" class="py-16 bg-dark-surface">
+        <div class="container">
+            <div class="section-header">
+                <h2>تفاصيل الإقامة</h2>
+                <p>معلومات مهمة حول الإقامة في الغرفة القياسية</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="animate-on-scroll">
+                    <h3 class="text-2xl font-bold text-gold mb-4">تفاصيل الغرفة</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-ruler-combined text-gold mt-1 mr-3"></i>
+                            <span><strong>المساحة:</strong> 25 متر مربع</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-user-friends text-gold mt-1 mr-3"></i>
+                            <span><strong>السعة:</strong> 2 بالغين</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-bed text-gold mt-1 mr-3"></i>
+                            <span><strong>السرير:</strong> 1 سرير كينغ أو سريرين توأم</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-door-open text-gold mt-1 mr-3"></i>
+                            <span><strong>الإطلالة:</strong> على المدينة أو الفناء الداخلي</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="animate-on-scroll">
+                    <h3 class="text-2xl font-bold text-gold mb-4">الخدمات المشمولة</h3>
+                    <ul class="space-y-3">
+                        <li><i class="fas fa-check text-gold mr-2"></i> وجبة الإفطار</li>
+                        <li><i class="fas fa-check text-gold mr-2"></i> خدمة الواي فاي المجانية</li>
+                        <li><i class="fas fa-check text-gold mr-2"></i> مواقف سيارات مجانية</li>
+                        <li><i class="fas fa-check text-gold mr-2"></i> خدمة التنظيف اليومي</li>
+                        <li><i class="fas fa-check text-gold mr-2"></i> خدمة استقبال على مدار 24 ساعة</li>
+                        <li><i class="fas fa-check text-gold mr-2"></i> استخدام المرافق العامة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الحجز -->
+    <section id="booking" class="py-16">
+        <div class="container">
+            <div class="section-header">
+                <h2>احجز غرفتك القياسية</h2>
+                <p>املأ النموذج أدناه لتأكيد حجزك</p>
+            </div>
+            <div class="max-w-2xl mx-auto">
+                <form class="booking-form">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="form-group">
+                            <label for="checkin">تاريخ الوصول</label>
+                            <input type="date" id="checkin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout">تاريخ المغادرة</label>
+                            <input type="date" id="checkout" required>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="form-group">
+                            <label for="adults">عدد البالغين</label>
+                            <select id="adults" required>
+                                <option value="1">1 بالغ</option>
+                                <option value="2" selected>2 بالغين</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="children">عدد الأطفال</label>
+                            <select id="children">
+                                <option value="0" selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="room-type">نوع الغرفة</label>
+                        <select id="room-type" required>
+                            <option value="standard" selected>غرفة قياسية</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="special-requests">طلبات خاصة (اختياري)</label>
+                        <textarea id="special-requests" rows="3" placeholder="أي طلبات خاصة أو احتياجات إضافية"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full mt-4">تأكيد الحجز</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- أسئلة شائعة -->
+    <section id="faq" class="py-16 bg-dark-surface">
+        <div class="container">
+            <div class="section-header">
+                <h2>أسئلة شائعة</h2>
+                <p>إجابات على الأسئلة الأكثر شيوعاً حول الغرفة القياسية</p>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="faq-item animate-on-scroll">
+                    <h3 class="text-xl font-bold text-gold mb-2">هل يمكن إضافة سرير إضافي في الغرفة القياسية؟</h3>
+                    <p class="text-text-subtle">نعم، يمكن إضافة سرير إضافي للطفل في الغرفة القياسية بتكلفة إضافية. يرجى الإشارة إلى ذلك في طلب الحجز.</p>
+                </div>
+                <div class="faq-item animate-on-scroll delay-100">
+                    <h3 class="text-xl font-bold text-gold mb-2">ما هو وقت التسجيل والانصراف؟</h3>
+                    <p class="text-text-subtle">وقت التسجيل من الساعة 2:00 ظهراً، ووقت الانصراف حتى الساعة 12:00 ظهراً. يمكن ترتيب تسجيل مبكر أو انصراف متأخر حسب التوفر.</p>
+                </div>
+                <div class="faq-item animate-on-scroll delay-200">
+                    <h3 class="text-xl font-bold text-gold mb-2">هل الحيوانات الأليفة مسموح بها؟</h3>
+                    <p class="text-text-subtle">لسنا حاليًا نستقبل حيوانات أليفة في الفندق، باستثناء حيوانات الخدمة المدربة.</p>
+                </div>
+                <div class="faq-item animate-on-scroll delay-300">
+                    <h3 class="text-xl font-bold text-gold mb-2">هل هناك سياسة إلغاء للحجز؟</h3>
+                    <p class="text-text-subtle">يمكنك الإلغاء مجانًا حتى 48 ساعة قبل موعد الوصول. بعد ذلك، قد يتم تطبيق رسوم الإلغاء.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-dark-surface text-text-subtle">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="logo-bg.png" alt="شعار فندق الضياء" class="footer-logo">
+                    <p class="mb-4">واحة المدينة الروحانية، حيث تلتقي الراحة بالروحانية.&copy; 2025 فندق الضياء. جميع الحقوق محفوظة.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-gold transition-colors">الرئيسية</a></li>
+                        <li><a href="index.html#rooms" class="hover:text-gold transition-colors">الغرف</a></li>
+                        <li><a href="index.html#amenities" class="hover:text-gold transition-colors">المرافق</a></li>
+                        <li><a href="index.html#contact" class="hover:text-gold transition-colors">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">الخدمات</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#services" class="hover:text-gold transition-colors">خدمة النقل</a></li>
+                        <li><a href="index.html#services" class="hover:text-gold transition-colors">خدمة الغرف</a></li>
+                        <li><a href="index.html#services" class="hover:text-gold transition-colors">السبا والاستجمام</a></li>
+                        <li><a href="index.html#services" class="hover:text-gold transition-colors">المطعم</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">النشرة البريدية</h4>
+                    <p class="mb-4">اشترك في نشرتنا البريدية لتصلك آخر العروض والأخبار.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="بريدك الإلكتروني" class="flex-grow p-2 rounded-r-lg bg-dark-bg text-white border border-gray-700" />
+                        <button type="submit" class="bg-gold text-white px-4 rounded-l-lg"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // كود JavaScript للرسوم المتحركة عند التمرير والقائمة المتنقلة
+        document.addEventListener('DOMContentLoaded', function() {
+            // الرسوم المتحركة عند التمرير
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // القائمة المتنقلة
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // إغلاق القائمة عند النقر على رابط
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // تأثير الشريط الملاحي عند التمرير
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    navbar.style.backgroundColor = 'rgba(26, 26, 26, 0.95)';
+                    navbar.style.padding = '0.5rem 2rem';
+                } else {
+                    navbar.style.backgroundColor = 'rgba(26, 26, 26, 0.9)';
+                    navbar.style.padding = '1rem 2rem';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
