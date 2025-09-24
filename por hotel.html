@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>فندق الضياء | واحة المدينة الروحانية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+    <nav id="navbar">
+        <!-- استبدل النص بصورة الشعار -->
+        <a href="#" class="font-bold text-2xl text-gold flex items-center">
+            <img src="logo-bg.png" alt="شعار فندق الضياء" class="hotel-logo">
+        </a>
+        <div class="hidden md:flex space-x-6 space-x-reverse">
+            <a href="#about" class="nav-link">نبذة عنا</a>
+            <a href="#rooms" class="nav-link">الغرف</a>
+            <a href="#prayer-times" class="nav-link">أوقات الصلاة</a>
+            <a href="#amenities" class="nav-link">المرافق</a>
+            <a href="#services" class="nav-link">الخدمات</a>
+            <a href="#gallery" class="nav-link">المعرض</a>
+            <a href="#testimonials" class="nav-link">آراء العملاء</a>
+            <a href="#location" class="nav-link">الموقع</a>
+            <a href="#contact" class="nav-link">اتصل بنا</a>
+            <a href="#booking" class="btn btn-primary">احجز الآن</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-white">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+    </nav>
+
+    <div id="mobile-menu" class="md:hidden fixed top-20 right-5 bg-dark-surface p-4 space-y-4 rounded-lg z-40">
+        <a href="#about" class="block nav-link">نبذة عنا</a>
+        <a href="#rooms" class="block nav-link">الغرف</a>
+        <a href="#prayer-times" class="block nav-link">أوقات الصلاة</a>
+        <a href="#amenities" class="block nav-link">المرافق</a>
+        <a href="#services" class="block nav-link">الخدمات</a>
+        <a href="#gallery" class="block nav-link">المعرض</a>
+        <a href="#testimonials" class="block nav-link">آراء العملاء</a>
+        <a href="#location" class="block nav-link">الموقع</a>
+        <a href="#contact" class="block nav-link">اتصل بنا</a>
+        <a href="#booking" class="block btn btn-primary text-center">احجز الآن</a>
+    </div>
+
+    <!-- Hero Section with Fixed Booking Form -->
+    <section class="hero-section">
+        <div class="hero-carousel">
+            <div class="carousel-slide active">
+                <!-- فيديو الخلفية -->
+                <video autoplay muted loop playsinline class="hero-video">
+                    <source src="فيديو المدينة.mp4" type="video/mp4">
+                    <!-- رابط احتياطي للفيديو -->
+                    <source src="فيديو المدينة.mp4" type="video/mp4">
+                    <!-- صورة احتياطية في حالة عدم دعم الفيديو -->
+                    <div style="width:100%;height:100%;background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1920x1080/000000/FFFFFF?text=فندق+الضياء') center/cover"></div>
+                </video>
+                
+                <!-- طبقة تظليل فوق الفيديو -->
+                <div class="video-overlay"></div>
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <div class="carousel-content active">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">مرحبا بكم في فندق الضياء</h1>
+                <p class="text-xl md:text-2xl mb-4">واحة المدينة الروحانية</p>
+            </div>
+        </div>
+
+        <div class="hero-booking-container">
+            <div class="hero-booking-box">
+                <div class="booking-input-group">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input type="date" placeholder="تاريخ الوصول" />
+                </div>
+                <div class="booking-input-group">
+                    <i class="fas fa-calendar-check"></i>
+                    <input type="date" placeholder="تاريخ المغادرة" />
+                </div>
+                <div class="booking-input-group">
+                    <i class="fas fa-users"></i>
+                    <input type="number" placeholder="عدد الأشخاص" min="1" max="10" />
+                </div>
+                <button class="btn btn-primary booking-btn">احجز الآن</button>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="about" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-header">
+                <h2>نبذة عن الفندق</h2>
+                <p>فندق الضياء هو واحة هادئة تقع في قلب المدينة، حيث تلتقي الفخامة بالروحانية.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-12">
+                <div class="animate-on-scroll">
+                    <img src="one-photo.jpg" alt="عن الفندق" class="rounded-lg shadow-lg w-full" />
+                </div>
+                <div class="animate-on-scroll">
+                    <h3 class="text-2xl font-bold text-gold mb-4">تجربة فندقية فريدة</h3>
+                    <p class="mb-4">يقدم فندق الضياء تجربة إقامة استثنائية تجمع بين رفاهية الإقامة وروحانية المكان. يتميز الفندق بموقعه المميز على بعد خطوات من الحرم النبوي الشريف.</p>
+                    <p class="mb-4">صمم الفندق بعناية فائقة ليوفر لأضيفه أجواءً من الراحة والطمأنينة، مع الحفاظ على أعلى معايير الخدمة والرفاهية.</p>
+                    <ul class="space-y-2">
+                        <li><i class="fas fa-check text-gold mr-2"></i> موقع مميز قريب من الحرم النبوي</li>
+                        <li><i class="fas fa-check text-gold mr-2"></i> غرف وأجنحة فاخرة بتصميم عصري</li>
+                        <li><i class="fas fa-check text-gold mr-2"></i> مرافق متكاملة وخدمات مميزة</li>
+                        <li><i class="fas fa-check text-gold mr-2"></i> طاقم متخصص لخدمة ضيوف الرحمن</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prayer-times" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-header">
+                <h2>أوقات الصلاة</h2>
+                <p>مواقيت الصلاة اليومية لراحتكم.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 mt-12">
+                <div class="prayer-time delay-100">الفجر: 04:30</div>
+                <div class="prayer-time delay-200">الظهر: 12:00</div>
+                <div class="prayer-time delay-300">العصر: 15:30</div>
+                <div class="prayer-time delay-400">المغرب: 18:15</div>
+                <div class="prayer-time delay-500">العشاء: 19:45</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rooms" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-header">
+                <h2>الغرف</h2>
+                <p>نقدم مجموعة متنوعة من الغرف والأجنحة الفاخرة التي تناسب جميع احتياجاتكم.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="card p-6 text-center delay-100">
+                    <img src="normal-room.jfif" alt="Room 1" class="rounded-lg mb-4 w-full" />
+                    <h3 class="text-2xl font-bold mb-2">غرفة قياسية</h3>
+                    <p class="text-text-subtle mb-4">غرفة مريحة مزودة بجميع الخدمات الأساسية.</p>
+                    <div class="flex justify-center mb-4">
+                        <span class="text-gold font-bold text-xl">100 ر.س</span>
+                        <span class="text-text-subtle mx-2">/ ليلة</span>
+                    </div>
+                    <button class="btn btn-primary">شاهد التفاصيل</button>
+                </div>
+                <div class="card p-6 text-center delay-200">
+                    <img src="deluxe.jfif" alt="Room 2" class="rounded-lg mb-4 w-full" />
+                    <h3 class="text-2xl font-bold mb-2">غرفة ديلوكس</h3>
+                    <p class="text-text-subtle mb-4">غرفة واسعة مع إطلالة رائعة وخدمات إضافية.</p>
+                    <div class="flex justify-center mb-4">
+                        <span class="text-gold font-bold text-xl">300 ر.س</span>
+                        <span class="text-text-subtle mx-2">/ ليلة</span>
+                    </div>
+                    <button class="btn btn-primary">شاهد التفاصيل</button>
+                </div>
+                <div class="card p-6 text-center delay-300">
+                    <img src="premuim-room.jfif" alt="Room 3" class="rounded-lg mb-4 w-full" />
+                    <h3 class="text-2xl font-bold mb-2">جناح فاخر</h3>
+                    <p class="text-text-subtle mb-4">جناح واسع مع كافة وسائل الراحة والخصوصية.</p>
+                    <div class="flex justify-center mb-4">
+                        <span class="text-gold font-bold text-xl">500 ر.س</span>
+                        <span class="text-text-subtle mx-2">/ ليلة</span>
+                    </div>
+                    <button class="btn btn-primary">شاهد التفاصيل</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="amenities" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-header">
+                <h2>المرافق</h2>
+                <p>استمتع بمرافقنا المتنوعة التي تضمن لكم إقامة لا تُنسى.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mt-12">
+                <div class="animate-on-scroll delay-100">
+                    <i class="fas fa-dumbbell icon"></i>
+                    <h3 class="text-xl font-bold mb-2">نادي رياضي</h3>
+                    <p class="text-text-subtle">معدات حديثة للتمارين الرياضية.</p>
+                </div>
+                <div class="animate-on-scroll delay-200">
+                    <i class="fas fa-spa icon"></i>
+                    <h3 class="text-xl font-bold mb-2">سبا واستجمام</h3>
+                    <p class="text-text-subtle">جلسات تدليك وعلاجات استرخاء متنوعة.</p>
+                </div>
+                <div class="animate-on-scroll delay-300">
+                    <i class="fas fa-swimming-pool icon"></i>
+                    <h3 class="text-xl font-bold mb-2">مسبح خارجي</h3>
+                    <p class="text-text-subtle">مسبح واسع مع إطلالة ساحرة.</p>
+                </div>
+                <div class="animate-on-scroll delay-400">
+                    <i class="fas fa-utensils icon"></i>
+                    <h3 class="text-xl font-bold mb-2">مطعم متعدد المطابخ</h3>
+                    <p class="text-text-subtle">تشكيلة متنوعة من الأطباق العالمية والمحلية.</p>
+                </div>
+                <div class="animate-on-scroll delay-500">
+                    <i class="fas fa-praying-hands icon"></i>
+                    <h3 class="text-xl font-bold mb-2">مصلى</h3>
+                    <p class="text-text-subtle">مكان مخصص للصلاة بأجواء روحانية هادئة.</p>
+                </div>
+                <div class="animate-on-scroll">
+                    <i class="fas fa-wifi icon"></i>
+                    <h3 class="text-xl font-bold mb-2">واي فاي مجاني</h3>
+                    <p class="text-text-subtle">إنترنت عالي السرعة في جميع أنحاء الفندق.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-header">
+                <h2>الخدمات</h2>
+                <p>نسعى دائمًا لتقديم أفضل الخدمات لتلبية كافة احتياجاتكم.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mt-12">
+                <div class="animate-on-scroll delay-100">
+                    <i class="fas fa-concierge-bell icon"></i>
+                    <h3 class="text-xl font-bold mb-2">خدمة الغرف</h3>
+                    <p class="text-text-subtle">خدمة غرف على مدار 24 ساعة.</p>
+                </div>
+                <div class="animate-on-scroll delay-200">
+                    <i class="fas fa-shuttle-van icon"></i>
+                    <h3 class="text-xl font-bold mb-2">خدمة النقل</h3>
+                    <p class="text-text-subtle">توصيل من وإلى المطار بأمان وراحة.</p>
+                </div>
+                <div class="animate-on-scroll delay-300">
+                    <i class="fas fa-car icon"></i>
+                    <h3 class="text-xl font-bold mb-2">مواقف سيارات</h3>
+                    <p class="text-text-subtle">مواقف آمنة ومظلة للسيارات.</p>
+                </div>
+                <div class="animate-on-scroll delay-400">
+                    <i class="fas fa-suitcase-rolling icon"></i>
+                    <h3 class="text-xl font-bold mb-2">خدمة الأمتعة</h3>
+                    <p class="text-text-subtle">مساعدتك في حمل الأمتعة وتوصيلها للغرفة.</p>
+                </div>
+                <div class="animate-on-scroll delay-500">
+                    <i class="fas fa-user-tie icon"></i>
+                    <h3 class="text-xl font-bold mb-2">كونسيرج</h3>
+                    <p class="text-text-subtle">مساعدتك في ترتيب جولات واستشارات سياحية.</p>
+                </div>
+                <div class="animate-on-scroll">
+                    <i class="fas fa-hand-holding-heart icon"></i>
+                    <h3 class="text-xl font-bold mb-2">خدمات خاصة</h3>
+                    <p class="text-text-subtle">ترتيب زيارات للأماكن المقدسة وتقديم الإرشادات.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-header">
+                <h2>المعرض</h2>
+                <p>جولة بصرية في فندق الضياء.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                <img src="second-photo.jpg" alt="Gallery 1" class="rounded-lg delay-100 w-full" />
+                <img src="third-about.jpg" alt="Gallery 2" class="rounded-lg delay-200 w-full" />
+                <img src="premuim-room.jfif" alt="Gallery 3" class="rounded-lg delay-300 w-full" />
+                <img src="one-photo.jpg" alt="Gallery 4" class="rounded-lg delay-400 w-full" />
+                <img src="normal-room.jfif" alt="Gallery 5" class="rounded-lg delay-500 w-full" />
+                <img src="deluxe.jfif" alt="Gallery 6" class="rounded-lg w-full" />
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-header">
+                <h2>آراء العملاء</h2>
+                <p>ماذا يقول ضيوفنا عن إقامتهم في فندق الضياء؟</p>
+            </div>
+            <div id="testimonials-carousel" class="testimonials-carousel mt-12">
+                <div class="testimonial-slide active">
+                    <i class="fas fa-quote-left text-gold text-2xl mb-4"></i>
+                    <p class="testimonial-text">"تجربة رائعة! الفندق نظيف جدًا والموظفون ودودون للغاية. سأعود بالتأكيد في زيارتي القادمة للمدينة."</p>
+                    <p class="testimonial-author">أحمد السالم</p>
+                </div>
+                <div class="testimonial-slide">
+                    <i class="fas fa-quote-left text-gold text-2xl mb-4"></i>
+                    <p class="testimonial-text">"موقع مثالي قريب من الحرم، وخدمة الغرف ممتازة. فندق يستحق كل التقدير."</p>
+                    <p class="testimonial-author">فاطمة علي</p>
+                </div>
+                <div class="testimonial-slide">
+                    <i class="fas fa-quote-left text-gold text-2xl mb-4"></i>
+                    <p class="testimonial-text">"أفضل إقامة لي على الإطلاق في المدينة المنورة. الهدوء والراحة لا مثيل لهما."</p>
+                    <p class="testimonial-author">يوسف القاسم</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-header">
+                <h2>الموقع</h2>
+                <p>نحن على بعد خطوات من الحرم النبوي.</p>
+            </div>
+            <div class="mt-12 rounded-lg overflow-hidden shadow-lg">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3714.733718915003!2d39.60807601445778!3d24.46914616239745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15bdbe34125b27b3%3A0x19d45a95b871214!2z2KzYp9mF2Kkg2KfZhNix2KjYtNin2K_Yp9mB2Yc!5e0!3m2!1sar!2ssa!4v1628178875654!5m2!1sar!2ssa" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                <div class="animate-on-scroll">
+                    <h3 class="text-2xl font-bold text-gold mb-4">العنوان</h3>
+                    <p class="mb-4"><i class="fas fa-map-marker-alt text-gold mr-2"></i> شارع أبو بكر الصديق، المدينة المنورة، المملكة العربية السعودية</p>
+                    <p class="mb-4"><i class="fas fa-phone text-gold mr-2"></i> 00966148434567</p>
+                    <p class="mb-4"><i class="fas fa-envelope text-gold mr-2"></i> info@aldiyaa-hotel.com</p>
+                </div>
+                <div class="animate-on-scroll">
+                    <h3 class="text-2xl font-bold text-gold mb-4">أوقات الاستقبال</h3>
+                    <p class="mb-2">السبت - الخميس: 24 ساعة</p>
+                    <p class="mb-2">الجمعة: 24 ساعة</p>
+                    <p class="mb-4">خدمة العملاء متاحة على مدار 24 ساعة</p>
+                    <h3 class="text-2xl font-bold text-gold mb-4">وسائل المواصلات</h3>
+                    <p>مواقف سيارات مجانية - سيارات أجرة متوفرة - خدمة نقل للمطار</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-header">
+                <h2>احجز الآن</h2>
+                <p>اختر التواريخ وعدد الضيوف لتأكيد الحجز بسرعة وسهولة.</p>
+            </div>
+            <div class="max-w-2xl mx-auto mt-12">
+                <form class="flex flex-col gap-6 bg-dark-surface p-8 rounded-lg shadow-lg">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gold mb-2">تاريخ الوصول</label>
+                            <input type="date" class="w-full p-3 rounded-lg bg-dark-bg text-white border border-gray-700" />
+                        </div>
+                        <div>
+                            <label class="block text-gold mb-2">تاريخ المغادرة</label>
+                            <input type="date" class="w-full p-3 rounded-lg bg-dark-bg text-white border border-gray-700" />
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gold mb-2">عدد البالغين</label>
+                            <input type="number" min="1" max="10" class="w-full p-3 rounded-lg bg-dark-bg text-white border border-gray-700" />
+                        </div>
+                        <div>
+                            <label class="block text-gold mb-2">عدد الأطفال</label>
+                            <input type="number" min="0" max="10" class="w-full p-3 rounded-lg bg-dark-bg text-white border border-gray-700" />
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-gold mb-2">نوع الغرفة</label>
+                        <select class="w-full p-3 rounded-lg bg-dark-bg text-white border border-gray-700">
+                            <option value="">اختر نوع الغرفة</option>
+                            <option value="standard">غرفة قياسية</option>
+                            <option value="deluxe">غرفة ديلوكس</option>
+                            <option value="suite">جناح فاخر</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full mt-4">تأكيد الحجز</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-header">
+                <h2>اتصل بنا</h2>
+                <p>لأي استفسار أو معلومات إضافية، تواصل معنا عبر النموذج أدناه.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+                <div class="animate-on-scroll">
+                    <form class="flex flex-col gap-6 bg-dark-surface p-8 rounded-lg shadow-lg">
+                        <div>
+                            <label class="block text-gold mb-2">الاسم الكامل</label>
+                            <input type="text" placeholder="اسمك الكريم" class="w-full p-3 rounded-lg bg-dark-bg text-white border border-gray-700" />
+                        </div>
+                        <div>
+                            <label class="block text-gold mb-2">البريد الإلكتروني</label>
+                            <input type="email" placeholder="example@email.com" class="w-full p-3 rounded-lg bg-dark-bg text-white border border-gray-700" />
+                        </div>
+                        <div>
+                            <label class="block text-gold mb-2">رقم الهاتف</label>
+                            <input type="tel" placeholder="05XXXXXXXX" class="w-full p-3 rounded-lg bg-dark-bg text-white border border-gray-700" />
+                        </div>
+                        <div>
+                            <label class="block text-gold mb-2">الرسالة</label>
+                            <textarea placeholder="رسالتك..." rows="5" class="w-full p-3 rounded-lg bg-dark-bg text-white border border-gray-700"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full mt-4">إرسال الرسالة</button>
+                    </form>
+                </div>
+                <div class="animate-on-scroll">
+                    <div class="bg-dark-surface p-8 rounded-lg shadow-lg h-full">
+                        <h3 class="text-2xl font-bold text-gold mb-6">معلومات التواصل</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-gold text-xl mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold">العنوان</h4>
+                                    <p class="text-text-subtle">شارع أبو بكر الصديق، المدينة المنورة</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone text-gold text-xl mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold">الهاتف</h4>
+                                    <p class="text-text-subtle">00966148434567</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-gold text-xl mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold">البريد الإلكتروني</h4>
+                                    <p class="text-text-subtle">info@aldiyaa-hotel.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-gold text-xl mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold">أوقات العمل</h4>
+                                    <p class="text-text-subtle">24 ساعة طوال أيام الأسبوع</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="font-bold text-gold mb-4">تابعنا على</h4>
+                            <div class="flex space-x-4 space-x-reverse">
+                                <a href="#" class="text-2xl text-text-subtle hover:text-gold transition-colors"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-2xl text-text-subtle hover:text-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="text-2xl text-text-subtle hover:text-gold transition-colors"><i class="fab fa-snapchat"></i></a>
+                                <a href="#" class="text-2xl text-text-subtle hover:text-gold transition-colors"><i class="fab fa-tiktok"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-dark-surface text-text-subtle">
+        <div class="container">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <img src="logo-bg.png" alt="">
+                    <p class="mb-4" id="logofooter">واحة المدينة الروحانية، حيث تلتقي الراحة بالروحانية.&copy; 2025 فندق الضياء. جميع الحقوق محفوظة.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="hover:text-gold transition-colors">نبذة عنا</a></li>
+                        <li><a href="#rooms" class="hover:text-gold transition-colors">الغرف</a></li>
+                        <li><a href="#amenities" class="hover:text-gold transition-colors">المرافق</a></li>
+                        <li><a href="#contact" class="hover:text-gold transition-colors">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">الخدمات</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="hover:text-gold transition-colors">خدمة النقل</a></li>
+                        <li><a href="#services" class="hover:text-gold transition-colors">خدمة الغرف</a></li>
+                        <li><a href="#services" class="hover:text-gold transition-colors">السبا والاستجمام</a></li>
+                        <li><a href="#services" class="hover:text-gold transition-colors">المطعم</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">النشرة البريدية</h4>
+                    <p class="mb-4">اشترك في نشرتنا البريدية لتصلك آخر العروض والأخبار.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="بريدك الإلكتروني" class="flex-grow p-2 rounded-r-lg bg-dark-bg text-white border border-gray-700" />
+                        <button type="submit" class="bg-gold text-white px-4 rounded-l-lg"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
