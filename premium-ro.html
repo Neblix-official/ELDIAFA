@@ -8,66 +8,72 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
     <style>
-        /* نفس الأنماط من الموقع الرئيسي */
+        /* ===== متغيرات الألوان والخطوط ===== */
         :root {
             --primary: #c9a96e;
+            --secondary: #b89454;
             --dark-bg: #1a1a1a;
             --dark-surface: #2d2d2d;
             --text-primary: #ffffff;
             --text-subtle: #b0b0b0;
+            --color-gold: #C0A463;
+            --color-gradient: linear-gradient(135deg, #C0A463, #E1C18E);
         }
-        
+
+        /* ===== الأنماط العامة ===== */
         body {
             font-family: 'Tajawal', sans-serif;
             background-color: var(--dark-bg);
             color: var(--text-primary);
         }
-        
+
         .text-gold {
             color: var(--primary);
         }
-        
+
         .bg-dark-surface {
             background-color: var(--dark-surface);
-        
+        }
+
         .section-header {
             text-align: center;
             margin-bottom: 3rem;
         }
-        
+
         .section-header h2 {
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
             color: var(--primary);
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1rem;
         }
-        
+
+        /* ===== الرسوم المتحركة عند التمرير ===== */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s ease;
         }
-        
+
         .animate-on-scroll.animated {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .delay-100 { transition-delay: 0.1s; }
         .delay-200 { transition-delay: 0.2s; }
         .delay-300 { transition-delay: 0.3s; }
         .delay-400 { transition-delay: 0.4s; }
         .delay-500 { transition-delay: 0.5s; }
-        
-        /* أنماط التنقل */
+
+        /* ===== شريط التنقل (Navbar) ===== */
         #navbar {
-            width: 100%;
+            width: 90%;
             padding: 0 60px;
             z-index: 1000;
             display: flex;
@@ -76,65 +82,45 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             height: 80px;
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50px;
+            background: rgba(45, 45, 45, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #c0a46323;
         }
 
-        #navbar.scrolled {
-            padding: 0 1rem;
-            height: 70px;
-            backdrop-filter: blur(12px);
-            position: relative;
-            top: 5px;
-            left: 60px;
-            width: 90%;
-            border-width: 1px;
-            border-radius: 30px;
-            border-color: #c0a46323;
-            position: fixed;
-        }
-        
-        #navbar.scrolled:hover{
+        #navbar:hover {
             border-color: #C0A463;
-            border-width: 1px;
-            transition: 0.5s;
         }
-        
+
         .hotel-logo {
             height: 130px;
             transition: all 0.3s ease;
         }
         
-        #navbar.scrolled .hotel-logo {
-            height: 130px;
-        
+        #navbar .nav-links-container {
+            transition: all 0.3s ease;
         }
-        
-        #navbar button {
-            padding-left: 25px;
-            background: none;
-            border: none;
-            color: var(--color-text-light);
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-        
+
         .nav-link {
             position: relative;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             font-weight: 500;
-            color: var(--color-text-light);
+            color: var(--text-primary);
             padding: 15px 10px;
             border-radius: 6px;
             text-decoration: none;
+            margin: 0 5px;
         }
-        
+
         .nav-link:hover {
             transform: translateY(-3px);
             color: var(--color-gold);
             background: rgba(192, 164, 99, 0.1);
         }
-        
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -147,13 +133,13 @@
             transition: width 0.4s ease-out;
             border-radius: 2px;
         }
-        
-        .nav-link:hover::after, 
+
+        .nav-link:hover::after,
         .nav-link.active::after {
             width: 80%;
         }
-        
-        /* ===== BUTTONS ===== */
+
+        /* ===== الأزرار ===== */
         .btn {
             padding: 12px 24px;
             border-radius: 50px;
@@ -168,14 +154,14 @@
             font-family: 'Tajawal', sans-serif;
             font-size: 1rem;
         }
-        
+
         .btn-primary {
             background: var(--color-gradient);
             color: white;
             border: 2px solid transparent;
             box-shadow: 0 5px 15px rgba(192, 164, 99, 0.4);
         }
-        
+
         .btn-primary:hover {
             background: transparent;
             color: var(--color-gold);
@@ -183,8 +169,8 @@
             box-shadow: 0 8px 20px rgba(192, 164, 99, 0.3);
             transform: translateY(-3px);
         }
-                
-        /* هيرو سيكشن للغرفة */
+        
+        /* ===== هيرو سيكشن للغرفة ===== */
         .room-hero {
             height: 70vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('premium-room.jfif') center/cover;
@@ -194,58 +180,58 @@
             text-align: center;
             margin-top: 80px;
         }
-        
+
         .room-hero-content h1 {
             font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
         }
-        
+
         .room-hero-content p {
             font-size: 1.5rem;
             margin-bottom: 2rem;
         }
-        
+
         .price-tag {
             font-size: 2rem;
             font-weight: bold;
             color: var(--primary);
             margin: 1rem 0;
         }
-        
-        /* معرض الصور */
+
+        /* ===== معرض الصور ===== */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1rem;
             margin-top: 2rem;
         }
-        
+
         .gallery-item {
             overflow: hidden;
             border-radius: 10px;
             height: 250px;
         }
-        
+
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
-        
+
         .gallery-item:hover img {
             transform: scale(1.05);
         }
-        
-        /* ميزات الغرفة */
+
+        /* ===== ميزات الغرفة ===== */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
-        
+
         .feature-item {
             text-align: center;
             padding: 1.5rem;
@@ -253,36 +239,36 @@
             border-radius: 10px;
             transition: transform 0.3s ease;
         }
-        
+
         .feature-item:hover {
             transform: translateY(-5px);
         }
-        
+
         .feature-icon {
             font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 1rem;
         }
-        
-        /* نموذج الحجز */
+
+        /* ===== نموذج الحجز ===== */
         .booking-form {
             background-color: var(--dark-surface);
             padding: 2rem;
             border-radius: 10px;
             margin-top: 2rem;
         }
-        
+
         .form-group {
             margin-bottom: 1.5rem;
         }
-        
+
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             color: var(--primary);
             font-weight: bold;
         }
-        
+
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 0.75rem;
@@ -291,20 +277,20 @@
             border-radius: 5px;
             color: var(--text-primary);
         }
-        
-        /* فوتر */
+
+        /* ===== فوتر ===== */
         footer {
             background-color: var(--dark-surface);
             padding: 3rem 0;
             margin-top: 4rem;
         }
-        
+
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-        
+
         .footer-logo {
             height: 60px;
             margin-bottom: 1rem;
@@ -316,12 +302,12 @@
         <a href="index.html" class="font-bold text-2xl text-gold flex items-center">
             <img src="logo-bg.png" alt="شعار فندق الضياء" class="hotel-logo">
         </a>
-        <div class="hidden md:flex space-x-6 space-x-reverse">
+        <div class="hidden md:flex nav-links-container">
             <a href="index.html" class="nav-link">الرئيسية</a>
             <a href="index.html#rooms" class="nav-link">الغرف</a>
             <a href="index.html#amenities" class="nav-link">المرافق</a>
             <a href="index.html#contact" class="nav-link">اتصل بنا</a>
-            <a href="#booking" class="btn btn-primary">احجز الآن</a>
+            <a href="#booking" class="btn btn-primary mr-3">احجز الآن</a>
         </div>
         <button id="mobile-menu-btn" class="md:hidden text-white">
             <i class="fas fa-bars fa-lg"></i>
@@ -338,16 +324,16 @@
 
     <section class="room-hero">
         <div class="room-hero-content">
-            <h1>الجناح البريميوم</h1>
-            <p>قمة الفخامة والرفاهية، مع مساحة معيشة منفصلة وإطلالة بانورامية</p>
-            <div class="price-tag">450 ر.س / ليلة</div>
-            <a href="#booking" class="btn btn-primary">احجز الآن</a>
+            <h1 class="animate-on-scroll">الجناح البريميوم</h1>
+            <p class="animate-on-scroll delay-100">قمة الفخامة والرفاهية، مع مساحة معيشة منفصلة وإطلالة بانورامية</p>
+            <div class="price-tag animate-on-scroll delay-200">450 ر.س / ليلة</div>
+            <a href="#booking" class="btn btn-primary animate-on-scroll delay-300">احجز الآن</a>
         </div>
     </section>
 
     <section id="overview" class="py-16">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate-on-scroll">
                 <h2>نظرة عامة</h2>
                 <p>استمتع بتجربة إقامة لا تُضاهى في الجناح البريميوم</p>
             </div>
@@ -372,7 +358,7 @@
 
     <section id="features" class="py-16 bg-dark-surface">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate-on-scroll">
                 <h2>ميزات الجناح</h2>
                 <p>جميع الخدمات والمرافق الحصرية المتوفرة في الجناح البريميوم</p>
             </div>
@@ -413,7 +399,7 @@
 
     <section id="gallery" class="py-16">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate-on-scroll">
                 <h2>معرض الصور</h2>
                 <p>جولة مصورة داخل الجناح البريميوم</p>
             </div>
@@ -433,7 +419,7 @@
 
     <section id="details" class="py-16 bg-dark-surface">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate-on-scroll">
                 <h2>تفاصيل الإقامة</h2>
                 <p>معلومات مهمة حول الإقامة في الجناح البريميوم</p>
             </div>
@@ -476,12 +462,12 @@
 
     <section id="booking" class="py-16">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate-on-scroll">
                 <h2>احجز جناحك البريميوم</h2>
                 <p>املأ النموذج أدناه لتأكيد حجزك</p>
             </div>
             <div class="max-w-2xl mx-auto">
-                <form class="booking-form">
+                <form class="booking-form animate-on-scroll">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="form-group">
                             <label for="checkin">تاريخ الوصول</label>
@@ -530,7 +516,7 @@
 
     <section id="faq" class="py-16 bg-dark-surface">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate-on-scroll">
                 <h2>أسئلة شائعة</h2>
                 <p>إجابات على الأسئلة الأكثر شيوعاً حول الجناح البريميوم</p>
             </div>
@@ -628,13 +614,14 @@
             
             // تأثير الشريط الملاحي عند التمرير
             const navbar = document.getElementById('navbar');
+            const navLinksContainer = document.querySelector('.nav-links-container');
+            const logo = document.querySelector('.hotel-logo');
+            
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 100) {
-                    navbar.style.backgroundColor = 'rgba(26, 26, 26, 0.95)';
-                    navbar.style.padding = '0.5rem 2rem';
+                    navbar.style.top = '10px';
                 } else {
-                    navbar.style.backgroundColor = 'rgba(26, 26, 26, 0.9)';
-                    navbar.style.padding = '1rem 2rem';
+                    navbar.style.top = '20px';
                 }
             });
         });
