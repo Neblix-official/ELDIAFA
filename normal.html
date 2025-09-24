@@ -9,16 +9,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet" />
     <style>
         /* Same styles from the main site */
-        :root {
+         :root {
             --primary: #c9a96e;
+            --secondary: #b89454;
             --dark-bg: #1a1a1a;
             --dark-surface: #2d2d2d;
             --text-primary: #ffffff;
             --text-subtle: #b0b0b0;
+            --color-gold: #C0A463;
+            --color-gradient: linear-gradient(135deg, #C0A463, #E1C18E);
         }
 
+        /* ===== الأنماط العامة ===== */
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Tajawal', sans-serif;
             background-color: var(--dark-bg);
             color: var(--text-primary);
         }
@@ -29,20 +33,6 @@
 
         .bg-dark-surface {
             background-color: var(--dark-surface);
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: #b89454;
-            transform: translateY(-2px);
         }
 
         .section-header {
@@ -63,6 +53,7 @@
             padding: 0 1rem;
         }
 
+        /* ===== الرسوم المتحركة عند التمرير ===== */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(30px);
@@ -80,40 +71,109 @@
         .delay-400 { transition-delay: 0.4s; }
         .delay-500 { transition-delay: 0.5s; }
 
-        /* Navigation styles */
-        nav {
-            background-color: rgba(26, 26, 26, 0.9);
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
+        /* ===== شريط التنقل (Navbar) ===== */
+        #navbar {
+            width: 90%;
+            padding: 0 60px;
             z-index: 1000;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 80px;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50px;
+            background: rgba(45, 45, 45, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #c0a46323;
+        }
+
+        #navbar:hover {
+            border-color: #C0A463;
+        }
+
+        .hotel-logo {
+            height: 130px;
+            transition: all 0.3s ease;
+        }
+        
+        #navbar .nav-links-container {
             transition: all 0.3s ease;
         }
 
         .nav-link {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 500;
             color: var(--text-primary);
+            padding: 15px 10px;
+            border-radius: 6px;
             text-decoration: none;
-            transition: color 0.3s ease;
-            padding: 0.5rem 1rem;
+            margin: 0 5px;
         }
 
         .nav-link:hover {
-            color: var(--primary);
+            transform: translateY(-3px);
+            color: var(--color-gold);
+            background: rgba(192, 164, 99, 0.1);
         }
 
-        .hotel-logo {
-            height: 50px;
-            width: auto;
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--color-gradient);
+            transition: width 0.4s ease-out;
+            border-radius: 2px;
         }
 
-        /* Room hero section */
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
+
+        /* ===== الأزرار ===== */
+        .btn {
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--color-gradient);
+            color: white;
+            border: 2px solid transparent;
+            box-shadow: 0 5px 15px rgba(192, 164, 99, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--color-gold);
+            border-color: var(--color-gold);
+            box-shadow: 0 8px 20px rgba(192, 164, 99, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        /* ===== هيرو سيكشن للغرفة ===== */
         .room-hero {
             height: 70vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('normal-room.jfif') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('premium-room.jfif') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -139,7 +199,7 @@
             margin: 1rem 0;
         }
 
-        /* Gallery */
+        /* ===== معرض الصور ===== */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -164,7 +224,7 @@
             transform: scale(1.05);
         }
 
-        /* Room Features */
+        /* ===== ميزات الغرفة ===== */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -190,7 +250,7 @@
             margin-bottom: 1rem;
         }
 
-        /* Booking Form */
+        /* ===== نموذج الحجز ===== */
         .booking-form {
             background-color: var(--dark-surface);
             padding: 2rem;
@@ -218,7 +278,7 @@
             color: var(--text-primary);
         }
 
-        /* Footer */
+        /* ===== فوتر ===== */
         footer {
             background-color: var(--dark-surface);
             padding: 3rem 0;
